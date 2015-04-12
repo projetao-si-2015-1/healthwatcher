@@ -15,7 +15,6 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-
 public class AnimalComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

@@ -25,7 +25,7 @@ public class Employee implements Serializable {
 	@Column(length = 32)
 	private String password;
 
-	// To do: verificar se esse metodo sera feito no bean.
+	//TODO: verificar se esse metodo sera feito no bean.
 	public boolean validatePassword(String password) {
 		return this.password.equals(password);
 	}
