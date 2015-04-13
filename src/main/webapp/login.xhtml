@@ -5,16 +5,24 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/template.xhtml">
    <ui:define name="content">
-      <h:panelGrid columns="1">
-      	<h:outputLink value="#{facesContext.externalContext.request.contextPath}/specifyComplaint.jsf">
-      		Insert a new complaint
-      	</h:outputLink>
-      	<h:outputLink value="#{facesContext.externalContext.request.contextPath}/queriesMenu.jsf">
-      		Queries' Menu
-      	</h:outputLink>
-      	<h:outputLink value="#{facesContext.externalContext.request.contextPath}/login.jsf">
-      		Employee login
-      	</h:outputLink>      	      	
-      </h:panelGrid>
+	  <center>
+		<h:outputText value="Usuário ou senha incorretos." rendered="#{param.erro}" style="color: darkred" />
+	  </center>   
+	  <h:form action="j_spring_security_check" method="post">
+		<h:panelGrid columns="2" cellpadding="5">
+		    <h:outputLabel for="j_username" value="Usuário: * " />  
+		    <h:inputText id="j_username" required="true" />  
+		    <h:outputLabel for="j_password" value="Senha: * " />  
+		    <h:inputSecret id="j_password" required="true" />  
+
+			<h:commandButton value="Login" />
+			<h:commandButton type="reset" value="Clear" />
+		</h:panelGrid>	
+	  </h:form>
+   	  <center>
+	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
+	   	  	Main Menu
+	   	  </h:outputLink>
+	  </center>		
    </ui:define>
 </ui:composition>

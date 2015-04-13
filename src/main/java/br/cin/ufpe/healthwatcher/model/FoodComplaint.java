@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
  *
  */
 @Entity
-
 public class FoodComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

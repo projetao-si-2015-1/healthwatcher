@@ -7,6 +7,51 @@
    <ui:define name="content">
    	  <h1>Food Complaint</h1>
    	  
+   	  <h:form method="post">
+   	  	
+   	  	<p>Complaint Description</p>
+   	  	<h:inputTextarea value="#{foodComplaintController.foodComplaint.descricao}" rows="4" cols="50" />
+
+   	  	<p>Observations</p>
+   	  	<h:inputTextarea value="#{foodComplaintController.foodComplaint.observacao}" rows="2" cols="50" />
+   	  	
+   	  	<h3>Complainer Data</h3>
+		<p>Complainer name:
+		   <h:inputText value="#{foodComplaintController.foodComplaint.solicitante}" />
+		</p>
+		<div>
+			Address: 
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoSolicitante.street}" />
+			
+			Complement:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoSolicitante.complement}" />
+		</div>
+		<p>
+			Province:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoSolicitante.neighbourhood}" />
+		</p>
+		
+		<p>
+			City:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoSolicitante.city}" />
+			
+			State:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoSolicitante.state}" />
+			
+			ZIP Code:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoSolicitante.zip}" />			
+		</p>
+		<p>
+			Phone Number:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoSolicitante.phone}" />
+		</p>
+		<p>
+			E-mail:
+			<h:inputText value="#{foodComplaintController.foodComplaint.email}" />
+		</p>				
+   	  
+   	  </h:form>
+   	  
    	  <center>
 	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
 	   	  	Main Menu
