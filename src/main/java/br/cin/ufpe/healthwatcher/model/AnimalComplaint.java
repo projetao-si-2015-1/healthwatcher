@@ -3,6 +3,7 @@ package br.cin.ufpe.healthwatcher.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -27,7 +28,7 @@ public class AnimalComplaint extends Complaint implements Serializable {
 	private String animal;
 	
 	// TODO: Verificar se a anotacao esta correta
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "code")
 	private Address occurenceLocalAddress;
 

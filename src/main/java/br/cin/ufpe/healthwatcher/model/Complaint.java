@@ -3,12 +3,14 @@ package br.cin.ufpe.healthwatcher.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -32,7 +34,7 @@ public abstract class Complaint implements Serializable {
 	@Column(length = 100)
 	private String email;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "login")
 	private Employee atendente;
 
@@ -46,6 +48,7 @@ public abstract class Complaint implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataQueixa;
 
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address enderecoSolicitante;
 
 	private long timestamp; // TODO para tratamento de concorrencia (scbs)

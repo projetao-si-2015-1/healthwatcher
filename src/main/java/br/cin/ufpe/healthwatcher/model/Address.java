@@ -13,12 +13,11 @@ import javax.persistence.*;
  * @author m_rocha
  */
 @Entity
-
 public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 	   
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer code;
 	
 	@Column(length = 100)

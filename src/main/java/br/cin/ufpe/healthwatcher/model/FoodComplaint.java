@@ -2,6 +2,7 @@ package br.cin.ufpe.healthwatcher.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -27,10 +28,12 @@ public class FoodComplaint extends Complaint implements Serializable {
 	@Column(length = 100)
 	private String refeicaoSuspeita;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "code")
 	private Address enderecoDoente;
 
+	@Column(name="nome_vitima")
+	private String nomeVitima;
 
 	public FoodComplaint() {
 		super();
@@ -83,6 +86,12 @@ public class FoodComplaint extends Complaint implements Serializable {
 
 	public void setEnderecoDoente(Address enderecoDoente) {
 		this.enderecoDoente = enderecoDoente;
+	}
+	public String getNomeVitima() {
+		return nomeVitima;
+	}
+	public void setNomeVitima(String nomeVitima) {
+		this.nomeVitima = nomeVitima;
 	}
    
 }

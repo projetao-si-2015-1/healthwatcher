@@ -10,43 +10,43 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.cin.ufpe.healthwatcher.model.Address;
+import br.cin.ufpe.healthwatcher.model.AnimalComplaint;
 import br.cin.ufpe.healthwatcher.model.Employee;
-import br.cin.ufpe.healthwatcher.model.FoodComplaint;
-import br.cin.ufpe.healthwatcher.service.FoodComplaintService;
+import br.cin.ufpe.healthwatcher.service.AnimalComplaintService;
 
 @ManagedBean
 @SessionScoped
-public class FoodComplaintController implements Serializable {
+public class AnimalComplaintController implements Serializable {
 	
-	private static final long serialVersionUID = -396582813699440065L;
+	private static final long serialVersionUID = 7502327389893929089L;
 
 	@Inject
-	private FoodComplaintService foodComplaintService;
+	private AnimalComplaintService animalComplaintService;
 	
 	@Inject
 	private FacesContext facesContext;
 	
-	private FoodComplaint foodComplaint;
+	private AnimalComplaint animalComplaint;
 	
 	@PostConstruct
 	public void init(){
-		foodComplaint = new FoodComplaint();
-		foodComplaint.setAtendente(new Employee());
-		foodComplaint.setEnderecoDoente(new Address());
-		foodComplaint.setEnderecoSolicitante(new Address());
+		animalComplaint = new AnimalComplaint();
+		animalComplaint.setAtendente(new Employee());
+		animalComplaint.setOccurenceLocalAddress(new Address());
+		animalComplaint.setEnderecoSolicitante(new Address());
 	}
 
-	public FoodComplaint getFoodComplaint() {
-		return foodComplaint;
+	public AnimalComplaint getAnimalComplaint() {
+		return animalComplaint;
 	}
 
-	public void setFoodComplaint(FoodComplaint foodComplaint) {
-		this.foodComplaint = foodComplaint;
+	public void setAnimalComplaint(AnimalComplaint animalComplaint) {
+		this.animalComplaint = animalComplaint;
 	}
 	
 	public void salvar(){
 		try{
-			foodComplaintService.inserir(foodComplaint);
+			animalComplaintService.inserir(animalComplaint);
 			facesContext.addMessage(null, 
 									new FacesMessage(FacesMessage.SEVERITY_INFO, 
 													 "Registrado!", 

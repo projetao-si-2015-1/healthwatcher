@@ -8,7 +8,7 @@
    	  <h1>Food Complaint</h1>
    	  
    	  <h:form method="post">
-   	  	
+   	  	<h:messages />
    	  	<p>Complaint Description</p>
    	  	<h:inputTextarea value="#{foodComplaintController.foodComplaint.descricao}" rows="4" cols="50" />
 
@@ -48,8 +48,64 @@
 		<p>
 			E-mail:
 			<h:inputText value="#{foodComplaintController.foodComplaint.email}" />
-		</p>				
-   	  
+		</p>
+		
+		<h3>Victim Information</h3>
+		<p>
+			Name:
+			<h:inputText value="#{foodComplaintController.foodComplaint.nomeVitima}" />
+		</p>
+		<p>
+			Address:
+		   <h:inputText value="#{foodComplaintController.foodComplaint.enderecoDoente.street}" />
+		   
+		   Complement:
+		   <h:inputText value="#{foodComplaintController.foodComplaint.enderecoDoente.complement}" />
+		</p>
+		<p>
+			Province:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoDoente.neighbourhood}" />
+		</p>
+		<p>
+			Closest City:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoDoente.city}" />
+			
+			State:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoDoente.state}" />
+			
+			ZIP Code:
+			<h:inputText value="#{foodComplaintController.foodComplaint.enderecoDoente.zip}" />			
+   	  	</p>
+   	  	<p>
+   	  		Telephone:
+   	  		<h:inputText value="#{foodComplaintController.foodComplaint.enderecoDoente.phone}" />
+   	  	</p>
+   	  	
+   	  	<h3>Event Information</h3>
+   	  	<p>
+   	  		Amount of people that ate the meal:
+   	  		<h:inputText value="#{foodComplaintController.foodComplaint.qtdeComensais}" />
+   	  		
+   	  		Amount of sick people:
+   	  		<h:inputText value="#{foodComplaintController.foodComplaint.qtdeDoentes}" />   	  		
+   	  	</p>
+   	  	<p>
+   	  		Amount of people checked into a hospital:
+   	  		<h:inputText value="#{foodComplaintController.foodComplaint.qtdeInternacoes}" />
+   	  		
+   	  		Amount of death:
+   	  		<h:inputText value="#{foodComplaintController.foodComplaint.qtdeObitos}" />   	  		
+   	  	</p>
+   	  	<p>
+   	  		Place of medical care:
+   	  		<h:inputText value="#{foodComplaintController.foodComplaint.localAtendimento}" />
+   	  		
+   	  		Suspicous meal:
+   	  		<h:inputText value="#{foodComplaintController.foodComplaint.refeicaoSuspeita}" />   	  		
+   	  	</p>
+   	  	
+		<h:commandButton value="Insert" action="#{foodComplaintController.salvar()}" />
+		<h:commandButton type="reset" value="Clear" />
    	  </h:form>
    	  
    	  <center>

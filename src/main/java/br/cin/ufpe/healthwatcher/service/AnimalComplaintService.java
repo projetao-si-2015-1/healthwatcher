@@ -10,21 +10,21 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.cin.ufpe.healthwatcher.model.AnimalComplaint;
 import br.cin.ufpe.healthwatcher.model.Employee;
-import br.cin.ufpe.healthwatcher.model.FoodComplaint;
 
 @Stateless
-public class FoodComplaintService {
+public class AnimalComplaintService {
 
 	@Inject
 	private EntityManager em;
 	
-	private static Logger log = LoggerFactory.getLogger(FoodComplaintService.class);
+	private static Logger log = LoggerFactory.getLogger(AnimalComplaintService.class);
 	
 	@Inject
-	private Event<FoodComplaint> event;
+	private Event<AnimalComplaint> event;
 	
-	public void inserir(FoodComplaint foodComplaint) {
+	public void inserir(AnimalComplaint animalComplaint) {
 		//TODO: pegar o employee da sessão de login do sistema ao inves de criar um novo hardcoded
 		Employee defaultEmployee = null;
 		try{
@@ -38,11 +38,11 @@ public class FoodComplaintService {
 			defaultEmployee.setPassword("123456");
 		}
 		
-		foodComplaint.setAtendente(defaultEmployee);
-		log.info("Registrando foodComplaint sobre " + foodComplaint.getDescricao());
+		animalComplaint.setAtendente(defaultEmployee);
+		log.info("Registrando animalComplaint sobre " + animalComplaint.getDescricao());
 		Session session = (Session) em.getDelegate();
-		session.persist(foodComplaint);
-		event.fire(foodComplaint);
+		session.persist(animalComplaint);
+		event.fire(animalComplaint);		
 	}
 
 }
