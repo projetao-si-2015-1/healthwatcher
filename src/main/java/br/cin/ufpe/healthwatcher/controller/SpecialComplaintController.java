@@ -11,45 +11,45 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.cin.ufpe.healthwatcher.model.Address;
-import br.cin.ufpe.healthwatcher.model.AnimalComplaint;
+import br.cin.ufpe.healthwatcher.model.SpecialComplaint;
 import br.cin.ufpe.healthwatcher.model.Employee;
-import br.cin.ufpe.healthwatcher.service.AnimalComplaintService;
+import br.cin.ufpe.healthwatcher.service.SpecialComplaintService;
 
 @ManagedBean
 @SessionScoped
-public class AnimalComplaintController implements Serializable {
+public class SpecialComplaintController implements Serializable {
 	
-	private static final long serialVersionUID = 7502327389893929089L;
+	private static final long serialVersionUID = -5104908221615000012L;
 
 	@Inject
-	private AnimalComplaintService animalComplaintService;
+	private SpecialComplaintService specialComplaintService;
 	
 	@Inject
 	private FacesContext facesContext;
 	
-	private AnimalComplaint animalComplaint;
+	private SpecialComplaint specialComplaint;
 	
 	@PostConstruct
 	public void init(){
-		animalComplaint = new AnimalComplaint();
-		animalComplaint.setAtendente(new Employee());
-		animalComplaint.setOccurenceLocalAddress(new Address());
-		animalComplaint.setEnderecoSolicitante(new Address());
+		specialComplaint = new SpecialComplaint();
+		specialComplaint.setAtendente(new Employee());
+		specialComplaint.setEnderecoSolicitante(new Address());
+		specialComplaint.setEnderecoOcorrencia(new Address());
 	}
 
-	public AnimalComplaint getAnimalComplaint() {
-		return animalComplaint;
+	public SpecialComplaint getSpecialComplaint() {
+		return specialComplaint;
 	}
 
-	public void setAnimalComplaint(AnimalComplaint animalComplaint) {
-		this.animalComplaint = animalComplaint;
+	public void setSpecialComplaint(SpecialComplaint specialComplaint) {
+		this.specialComplaint = specialComplaint;
 	}
 	
 	public void salvar(){
 		try{
-			this.animalComplaint.setDataParecer(new Date());
-			this.animalComplaint.setDataQueixa(new Date());
-			animalComplaintService.inserir(animalComplaint);
+			this.specialComplaint.setDataParecer(new Date());
+			this.specialComplaint.setDataQueixa(new Date());
+			specialComplaintService.inserir(specialComplaint);
 			facesContext.addMessage(null, 
 									new FacesMessage(FacesMessage.SEVERITY_INFO, 
 													 "Registrado!", 

@@ -2,6 +2,7 @@ package br.cin.ufpe.healthwatcher.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -12,7 +13,6 @@ import javax.persistence.ManyToOne;
  *
  */
 @Entity
-
 public class SpecialComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -24,7 +24,7 @@ public class SpecialComplaint extends Complaint implements Serializable {
 	@Column(length = 100)
 	private String ocupacao;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "code")
 	private Address enderecoOcorrencia;
 
