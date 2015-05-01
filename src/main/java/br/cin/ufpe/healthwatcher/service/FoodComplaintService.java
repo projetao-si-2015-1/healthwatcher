@@ -27,7 +27,10 @@ public class FoodComplaintService {
 	private EmployeeLogin employeeLogin;
 	
 	public void inserir(FoodComplaint foodComplaint) {
-		foodComplaint.setAtendente(employeeLogin.getEmployee());
+		if(employeeLogin.isLogged()){
+			foodComplaint.setAtendente(employeeLogin.getEmployee());
+		}
+		
 		log.info("Registrando foodComplaint sobre " + foodComplaint.getDescricao());
 		Session session = (Session) em.getDelegate();
 		session.persist(foodComplaint);

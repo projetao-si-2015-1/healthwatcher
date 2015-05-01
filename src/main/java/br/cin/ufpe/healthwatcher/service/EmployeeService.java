@@ -3,6 +3,7 @@ package br.cin.ufpe.healthwatcher.service;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
 import org.slf4j.Logger;
@@ -40,10 +41,16 @@ public class EmployeeService {
 	}
 	
 	public Employee findByLoginAndPass(String login, String pass){
-		Employee e = (Employee) em.createNamedQuery("employeePorLoginSenha")
-								   .setParameter("login", login)
-								   .setParameter("password", pass)
-								   .getSingleResult();
+		Employee e = null;
+		try{
+			e = (Employee) em.createNamedQuery("employeePorLoginSenha")
+							 .setParameter("login", login)
+							 .setParameter("password", pass)
+							 .getSingleResult();
+		} catch (NoResultException nre){
+			log.warn("Employee " + login + " não encontrado.");
+		}
+
 		return e;
 	}
 

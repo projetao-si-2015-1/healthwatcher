@@ -9,6 +9,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.service.EmployeeService;
 
@@ -45,6 +47,8 @@ public class EmployeeController implements Serializable {
 	
 	public void salvar(){
 		try{
+			BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
+			this.employee.setPassword(crypt.encode(this.employee.getPassword()));
 			employeeService.insert(employee);
 			facesContext.addMessage(null, 
 									new FacesMessage(FacesMessage.SEVERITY_INFO, 

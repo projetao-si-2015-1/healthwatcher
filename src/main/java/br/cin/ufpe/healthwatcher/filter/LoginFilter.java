@@ -29,14 +29,14 @@ public class LoginFilter implements Filter {
 		String url = req.getRequestURI();
 		
 		//se não tiver logado 
-		if(employeeLogin == null || !employeeLogin.isLogged){
+		if(employeeLogin == null || !employeeLogin.isLogged()){
 			if(url.indexOf("menuEmployee") >= 0){
 				res.sendRedirect(req.getServletContext().getContextPath()+"/login.jsf");
 			} else {
 				chain.doFilter(request, response);
 			}
 		} else {
-			if(employeeLogin.isLogged && url.indexOf("login.jsf") >= 0){
+			if(employeeLogin.isLogged() && url.indexOf("login.jsf") >= 0){
 				res.sendRedirect(req.getServletContext().getContextPath()+"/employee/menuEmployee.jsf");
 			} else {
 				chain.doFilter(request, response);

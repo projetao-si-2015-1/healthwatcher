@@ -7,6 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.service.EmployeeService;
 
@@ -17,7 +20,7 @@ public class EmployeeLogin implements Serializable {
 	private static final long serialVersionUID = -8729930869176381346L;
 
 	private Employee employee;
-	public boolean isLogged = false;
+	private boolean logged = false;
 	
 	@Inject
 	private EmployeeService employeeService;	
@@ -31,17 +34,18 @@ public class EmployeeLogin implements Serializable {
 	}
 
 	public boolean isLogged() {
-		return isLogged;
+		return logged;
 	}
 
 	public void setLogged(boolean isLogged) {
-		this.isLogged = isLogged;
+		this.logged = isLogged;
 	}
 
 	public String login(){
 		Employee emp = employeeService.find(employee.getLogin());
-		this.isLogged = emp!=null;
-		if(isLogged){
+		BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
+		this.logged = crypto.matches(employee.getPassword(), emp.getPassword());
+		if(logged){
 			return "/employee/menuEmployee.jsf?faces-redirect=true";
 		} else {
 			return "";
@@ -49,7 +53,7 @@ public class EmployeeLogin implements Serializable {
 	}
 	
 	public String logout() {
-		this.isLogged = false;
+		this.logged = false;
 		return "/home.jsf?faces-redirect=true";
 	}
 	
