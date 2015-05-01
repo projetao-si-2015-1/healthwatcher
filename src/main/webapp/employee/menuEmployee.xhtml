@@ -5,41 +5,53 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/template.xhtml">
    <ui:define name="content">
-	  <h1>Queries' Menu</h1>
-   	  <p>Choose any query below</p>
-   	  
-   	  <ul>
-   	  	<li>
-   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
-   	  			Show medical specialties grouped by health units
-   	  		</h:outputLink>
-   	  	</li>
-   	  </ul>
-   	  <ul>
-   	  	<li>
-   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
-   	  			Show health units grouped by medical specialties 
-   	  		</h:outputLink>
-   	  	</li>
-   	  </ul>
-   	  <ul>
-   	  	<li>
-   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
-   	  			Search complaints 
-   	  		</h:outputLink>
-   	  	</li>
-   	  </ul>   	  
-   	  <ul>   	     	  	
-   	  	<li>
-   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
-   	  			Search disease type data
-   	  		</h:outputLink>
-   	  	</li>
-   	  </ul>
-   	  <center>
-	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
-	   	  	Main Menu
-	   	  </h:outputLink>
-	  </center>
+	  <h1>Menu Employee</h1>
+
+   	  <h:form>
+	   	  <ul>
+	   	  	<li>
+	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
+	   	  			Update complaint
+	   	  		</h:outputLink>
+	   	  	</li>
+	   	  </ul>
+	   	  <ul>
+	   	  	<li>
+	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
+	   	  			Insert new employee 
+	   	  		</h:outputLink>
+	   	  	</li>
+	   	  </ul>
+	   	  <ul>
+	   	  	<li>
+	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
+	   	  			Update employee 
+	   	  		</h:outputLink>
+	   	  		(change password)
+	   	  	</li>
+	   	  </ul>   	  
+	   	  <ul>
+	   	  	<li>
+	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
+	   	  			Change health unit data
+	   	  		</h:outputLink>
+	   	  	</li>
+	   	  </ul>
+	   	  <ul>
+	   	  	<li>
+	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
+	   	  			Change logged employee
+	   	  		</h:outputLink>
+	   	  	</li>
+	   	  </ul>	   	  
+	   	  <center>
+		   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
+		   	  	Main Menu
+		   	  </h:outputLink>
+			  <h:outputLink title="Sair" value="Sair">
+				<h:commandLink action="#{employeeLogin.logout()}" value="Sair" />
+			  </h:outputLink>
+		  </center>
+	 </h:form>
    </ui:define>
 </ui:composition>

@@ -8,14 +8,15 @@
 	  <center>
 		<h:outputText value="Usuário ou senha incorretos." rendered="#{param.erro}" style="color: darkred" />
 	  </center>   
-	  <h:form action="j_spring_security_check" method="post">
+	  <h:form method="post">
 		<h:panelGrid columns="2" cellpadding="5">
 		    <h:outputLabel for="j_username" value="Usuário: * " />  
-		    <h:inputText id="j_username" required="true" />  
-		    <h:outputLabel for="j_password" value="Senha: * " />  
-		    <h:inputSecret id="j_password" required="true" />  
+		    <h:inputText id="j_username" value="#{employeeLogin.employee.login}" required="true" requiredMessage="Campo obrigatório." />
+		      
+		    <h:outputLabel for="j_password" value="Senha: * " requiredMessage="Campo obrigatório." />  
+		    <h:inputSecret id="j_password" value="#{employeeLogin.employee.password}" required="true" requiredMessage="Campo obrigatório." />  
 
-			<h:commandButton value="Login" />
+			<h:commandButton value="Login" action="#{employeeLogin.login()}" />
 			<h:commandButton type="reset" value="Clear" />
 		</h:panelGrid>	
 	  </h:form>

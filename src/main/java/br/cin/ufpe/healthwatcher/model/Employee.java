@@ -11,7 +11,10 @@ import javax.persistence.*;
  * @author m_rocha
  */
 @Entity
-
+@NamedQueries({
+	@NamedQuery(name="todosEmployees", query="SELECT e FROM Employee e"),
+	@NamedQuery(name="employeePorLoginSenha", query="SELECT e FROM Employee e WHERE e.login = :login AND e.password = :password"),
+})
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,8 +25,11 @@ public class Employee implements Serializable {
 	@Column(length = 100)
 	private String login;
 
-	@Column(length = 32)
+	@Column(length = 60)
 	private String password;
+	
+	@Column(columnDefinition="boolean default true", nullable=false)
+	private boolean enable;
 
 	//TODO: verificar se esse metodo sera feito no bean.
 	public boolean validatePassword(String password) {
@@ -51,6 +57,14 @@ public class Employee implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 
 }

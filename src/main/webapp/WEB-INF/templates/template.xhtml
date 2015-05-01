@@ -11,7 +11,7 @@
 <h:body>
 	<h:panelGroup id="page" layout="block">
 		<h:panelGroup id="header" layout="block">
-			<h1><a href="home.jsf">Health-Watcher</a></h1>
+			<h1><a href="#{facesContext.externalContext.request.contextPath}/home.jsf">Health-Watcher</a></h1>
 		</h:panelGroup>
 
 		<h:panelGroup id="container" layout="block">
@@ -24,7 +24,6 @@
 		</h:panelGroup>
 		<h:panelGroup id="footer" layout="block">
 			#{messages.footerText}<br/>
-			Generated using the Knappsack Java EE Maven Archetypes from <a href="http://www.AndyGibson.net">www.AndyGibson.net</a>
 		</h:panelGroup>
 	</h:panelGroup>
 
