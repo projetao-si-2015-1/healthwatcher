@@ -31,11 +31,6 @@ public class Employee implements Serializable {
 	@Column(columnDefinition="boolean default true", nullable=false)
 	private boolean enable;
 
-	//TODO: verificar se esse metodo sera feito no bean.
-	public boolean validatePassword(String password) {
-		return this.password.equals(password);
-	}
-
 	// Getters and Setters
 	public String getName() {
 		return this.name;

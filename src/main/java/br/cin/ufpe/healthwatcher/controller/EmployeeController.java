@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import br.cin.ufpe.healthwatcher.exception.EmployeeAlreadyExistsException;
 import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.service.EmployeeService;
 
@@ -45,22 +46,23 @@ public class EmployeeController implements Serializable {
 		this.employee = new Employee();
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		try{
 			BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
 			this.employee.setPassword(crypt.encode(this.employee.getPassword()));
 			employeeService.insert(employee);
-			facesContext.addMessage(null, 
-									new FacesMessage(FacesMessage.SEVERITY_INFO, 
-													 "Registrado!", 
-													 "Registro bem sucedido."));
 			init();
+		} catch (EmployeeAlreadyExistsException eaee){
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					eaee.getMessage(), "Registration mal sucedido"));
+            return "";
 		} catch(Exception e){
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Não foi possível registrar a reclamação!", "Registration mal sucedido"));			
+            						"Registration mal sucedido", "Não foi possível registrar a reclamação!"));
+            return "";
 		}
+		
+		return "menuEmployee.xhtml?faces-redirect=true";
 	}
-
-	
 	
 }

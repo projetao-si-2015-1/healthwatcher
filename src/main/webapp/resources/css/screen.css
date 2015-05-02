@@ -135,3 +135,14 @@ body {
 .li{
 	padding: 10px;
 }
+
+.noComplaint{
+	color: red;
+	font-weight: bold;
+}
+
+#messages{
+	list-style: none;
+	font-weight: bold;
+	color: darkred;
+}

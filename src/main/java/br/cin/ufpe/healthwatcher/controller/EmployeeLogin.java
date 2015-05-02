@@ -3,11 +3,12 @@ package br.cin.ufpe.healthwatcher.controller;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.cin.ufpe.healthwatcher.model.Employee;
@@ -24,6 +25,9 @@ public class EmployeeLogin implements Serializable {
 	
 	@Inject
 	private EmployeeService employeeService;	
+
+	@Inject
+	private FacesContext facesContext;	
 	
 	public Employee getEmployee() {
 		return employee;
@@ -48,6 +52,8 @@ public class EmployeeLogin implements Serializable {
 		if(logged){
 			return "/employee/menuEmployee.jsf?faces-redirect=true";
 		} else {
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+									"Senha ou usuário incorretos.", "Login inválido!"));
 			return "";
 		}
 	}

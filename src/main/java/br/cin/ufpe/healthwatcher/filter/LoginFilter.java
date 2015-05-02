@@ -30,7 +30,7 @@ public class LoginFilter implements Filter {
 		
 		//se não tiver logado 
 		if(employeeLogin == null || !employeeLogin.isLogged()){
-			if(url.indexOf("menuEmployee") >= 0){
+			if(url.indexOf("/employee/") >= 0){
 				res.sendRedirect(req.getServletContext().getContextPath()+"/login.jsf");
 			} else {
 				chain.doFilter(request, response);
