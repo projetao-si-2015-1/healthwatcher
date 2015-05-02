@@ -6,20 +6,19 @@
    template="/WEB-INF/templates/template.xhtml">
    <ui:define name="content">
 	  <h:form method="post">
-	  	<h:messages id="messages" />
+	  	<h:messages styleClass="messages" />
 		<h:panelGrid columns="2" cellpadding="5">
-		    <h:outputLabel for="username" value="Nome: * " />  
+		    <h:outputLabel for="username" value="Name: * " />  
 		    <h:inputText id="username" value="#{employeeController.employee.name}" required="true" requiredMessage="Campo obrigatório." />
 
 		    <h:outputLabel for="login" value="Login: * " />  
 		    <h:inputText id="login" value="#{employeeController.employee.login}" required="true" requiredMessage="Campo obrigatório." />
 		      
-		    <h:outputLabel for="password" value="Senha: * " requiredMessage="Campo obrigatório." />  
+		    <h:outputLabel for="password" value="Password: * " requiredMessage="Campo obrigatório." />  
 		    <h:inputSecret id="password" value="#{employeeController.employee.password}" required="true" requiredMessage="Campo obrigatório." />  
-
-			<h:commandButton value="Inserir" action="#{employeeController.salvar()}" />
-			<h:commandButton type="reset" value="Clear" />
-		</h:panelGrid>	
+		</h:panelGrid>
+		<h:commandButton value="Create" action="#{employeeController.salvar()}" style="margin-left: 80px;" />
+		<h:commandButton type="reset" value="Clear" style="margin-left: 10px;" />
 	  </h:form>
    	  <center>
 	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
