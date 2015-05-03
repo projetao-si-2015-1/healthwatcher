@@ -46,6 +46,12 @@ public class EmployeeLogin implements Serializable {
 	}
 
 	public String login(){
+		if(employee.getLogin()==null || employee.getLogin().trim().equals("")){
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+									"Informe um usuário válido.", "Login inválido!"));
+			return "";
+		}
+		
 		Employee emp = employeeService.find(employee.getLogin());
 		BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
 		this.logged = crypto.matches(employee.getPassword(), emp.getPassword());

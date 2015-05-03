@@ -15,7 +15,8 @@
 
 			<h:commandButton value="Login" action="#{employeeLogin.login()}" />
 			<h:commandButton type="reset" value="Clear" />
-		</h:panelGrid>	
+		</h:panelGrid>
+		<h:messages styleClass="messages" />	
 	  </h:form>
    	  <center>
 	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
