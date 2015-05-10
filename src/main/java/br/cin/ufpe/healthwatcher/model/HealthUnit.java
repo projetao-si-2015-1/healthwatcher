@@ -1,10 +1,18 @@
 package br.cin.ufpe.healthwatcher.model;
 
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity implementation class for Entity: HealthUnit
@@ -13,7 +21,11 @@ import javax.persistence.*;
  * @author m_rocha
  */
 @Entity
-
+@NamedQueries({
+	@NamedQuery(name="healthUnitByName", query="SELECT h FROM HealthUnit h WHERE h.code = :code"),
+	@NamedQuery(name="allHealthUnits", query="SELECT h FROM HealthUnit h"),
+	@NamedQuery(name="healthUnitsBySpecialty", query="SELECT h FROM HealthUnit h inner join h.specialties specialties WHERE specialties.code IN :code")
+})
 public class HealthUnit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,10 +36,9 @@ public class HealthUnit implements Serializable {
 	@Column(length = 200)
 	private String description;
 
-	@ManyToMany
-	@JoinTable
-	(name = "healthunit_medicalspeciality", joinColumns = @JoinColumn(name = "healthunit_code"), inverseJoinColumns = @JoinColumn(name = "medicalspeciality_code"))
-	private List<MedicalSpeciality> specialities;
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name = "healthunit_medicalspecialty", joinColumns = @JoinColumn(name = "healthunit_code"), inverseJoinColumns = @JoinColumn(name = "medicalspecialty_code"))
+	private List<MedicalSpecialty> specialties;
 
 	// Getters and Setters
 	public Integer getCode() {
@@ -44,12 +55,42 @@ public class HealthUnit implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}   
-	public List<MedicalSpeciality> getSpecialities() {
-		return this.specialities;
+	public List<MedicalSpecialty> getSpecialities() {
+		return this.specialties;
 	}
 
-	public void setSpecialities(List<MedicalSpeciality> specialities) {
-		this.specialities = specialities;
+	public void setSpecialties(List<MedicalSpecialty> specialities) {
+		this.specialties = specialities;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		HealthUnit other = (HealthUnit) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "HealthUnit [code=" + code + ", description=" + description + "]";
 	}
 
 }

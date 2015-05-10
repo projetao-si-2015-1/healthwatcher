@@ -33,15 +33,15 @@
 	   	  </ul>   	  
 	   	  <ul>
 	   	  	<li>
-	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
+	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/employee/searchHealthUnitData.jsf">
 	   	  			Change health unit data
 	   	  		</h:outputLink>
 	   	  	</li>
 	   	  </ul>
 	   	  <ul>
 	   	  	<li>
-	   	  		<h:outputLink value="#{facesContext.externalContext.request.contextPath}/#">
-	   	  			Change logged employee
+	   	  		<h:outputLink>
+	   	  			<h:commandLink action="#{employeeLogin.changeLoggedUser()}" value="Change logged employee" />
 	   	  		</h:outputLink>
 	   	  	</li>
 	   	  </ul>	   	  

@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PROCESS model-entity="JSFProcess"/>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#searchHealthUnitBySpecialty.xhtml"
+  PATH="/searchHealthUnitBySpecialty.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#searchHealthUnitBySpecialty.xhtml:0"
+   NAME="item" PATH="/searchHealthUnitBySpecialty.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="SUCESSO:#{medicalSpecialtyController.searchHealthUnits()}:#listHealthUnitsBySpecialty.xhtml"
+    NAME="output" PATH="/listHealthUnitsBySpecialty.xhtml"
+    TARGET="rules:#listHealthUnitsBySpecialty.xhtml"
+    TITLE="#{medicalSpecialtyController.searchHealthUnits()}:SUCESSO" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listHealthUnitsBySpecialty.xhtml"
+  PATH="/listHealthUnitsBySpecialty.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

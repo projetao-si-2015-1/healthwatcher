@@ -36,6 +36,10 @@ public class LoginFilter implements Filter {
 				chain.doFilter(request, response);
 			}
 		} else {
+			String login = (String) req.getSession().getAttribute("login");
+			if(login==null){
+				req.getSession().setAttribute("login", employeeLogin.getEmployee().getLogin());
+			}
 			if(employeeLogin.isLogged() && url.indexOf("login.jsf") >= 0){
 				res.sendRedirect(req.getServletContext().getContextPath()+"/employee/menuEmployee.jsf");
 			} else {

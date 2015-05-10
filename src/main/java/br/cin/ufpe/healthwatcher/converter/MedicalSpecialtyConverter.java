@@ -9,23 +9,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
 
-import br.cin.ufpe.healthwatcher.model.Employee;
-import br.cin.ufpe.healthwatcher.service.EmployeeService;
+import br.cin.ufpe.healthwatcher.model.MedicalSpecialty;
+import br.cin.ufpe.healthwatcher.service.MedicalSpecialtyService;
 
 @ManagedBean
 @SessionScoped
-public class EmployeeConverter implements Converter, Serializable {
+public class MedicalSpecialtyConverter implements Converter, Serializable {
 
 	private static final long serialVersionUID = 391558762793887877L;
 	
 	@Inject
-	private EmployeeService employeeService;
+	private MedicalSpecialtyService medicalSpecialtyService;
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,	String value) {
 		if(value!=null){
-			Employee emp = employeeService.find(value);
-			return emp;
+			MedicalSpecialty ms = medicalSpecialtyService.find(Integer.parseInt(value));
+			return ms;
 		} else {
 			return null;
 		}
@@ -33,8 +33,8 @@ public class EmployeeConverter implements Converter, Serializable {
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,	Object value) {
-		String login = String.valueOf(((Employee) value).getLogin());
-		return login;
+		String code = String.valueOf(((MedicalSpecialty) value).getCode());
+		return code;
 	}
 
 }

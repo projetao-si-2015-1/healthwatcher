@@ -7,7 +7,7 @@
    <ui:define name="content">
    	  <h1>Animal Complaint</h1>
    	  <h:form method="post">
-		<h:messages />
+		<h:messages id="messages" styleClass="messages" />
    	  	<p>Complaint Description</p>
    	  	<h:inputTextarea value="#{animalComplaintController.animalComplaint.descricao}" rows="4" cols="50" />
 

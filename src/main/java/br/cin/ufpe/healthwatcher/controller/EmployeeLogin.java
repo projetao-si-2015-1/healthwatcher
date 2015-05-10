@@ -8,13 +8,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.service.EmployeeService;
 
-@ManagedBean
+@ManagedBean(name="employeeLogin")
 @SessionScoped
 public class EmployeeLogin implements Serializable {
 
@@ -44,6 +45,11 @@ public class EmployeeLogin implements Serializable {
 	public void setLogged(boolean isLogged) {
 		this.logged = isLogged;
 	}
+	
+	@PostConstruct
+	private void init(){
+		this.employee = new Employee();
+	}
 
 	public String login(){
 		if(employee.getLogin()==null || employee.getLogin().trim().equals("")){
@@ -53,9 +59,15 @@ public class EmployeeLogin implements Serializable {
 		}
 		
 		Employee emp = employeeService.find(employee.getLogin());
+		if(emp==null){
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+									"Senha ou usuário incorretos.", "Login inválido!"));
+			return "";			
+		}
 		BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
 		this.logged = crypto.matches(employee.getPassword(), emp.getPassword());
 		if(logged){
+			this.employee = emp;
 			return "/employee/menuEmployee.jsf?faces-redirect=true";
 		} else {
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -65,13 +77,15 @@ public class EmployeeLogin implements Serializable {
 	}
 	
 	public String logout() {
+		HttpServletRequest req = (HttpServletRequest) facesContext.getExternalContext().getSession(false);
+		req.removeAttribute("login");
 		this.logged = false;
 		return "/home.jsf?faces-redirect=true";
 	}
-	
-	@PostConstruct
-	private void init(){
-		this.employee = new Employee();
-	}
+
+	public String changeLoggedUser() {
+		this.logged = false;
+		return "/login.jsf?faces-redirect=true";
+	}	
 	
 }

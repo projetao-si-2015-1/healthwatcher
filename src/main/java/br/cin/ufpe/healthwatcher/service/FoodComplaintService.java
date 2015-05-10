@@ -2,8 +2,10 @@ package br.cin.ufpe.healthwatcher.service;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Session;
 import org.slf4j.Logger;
@@ -24,10 +26,12 @@ public class FoodComplaintService {
 	private Event<FoodComplaint> event;
 	
 	@Inject
-	private EmployeeLogin employeeLogin;
+	private FacesContext facesContext;
 	
-	public void inserir(FoodComplaint foodComplaint) {
-		if(employeeLogin.isLogged()){
+	public void inserir(FoodComplaint foodComplaint){
+		HttpServletRequest req = (HttpServletRequest) facesContext.getExternalContext().getRequest();
+		EmployeeLogin employeeLogin = (EmployeeLogin) req.getSession().getAttribute("employeeLogin");
+		if(employeeLogin!=null && employeeLogin.isLogged()){
 			foodComplaint.setAtendente(employeeLogin.getEmployee());
 		}
 		

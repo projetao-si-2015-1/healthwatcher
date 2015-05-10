@@ -1,5 +1,6 @@
 package br.cin.ufpe.healthwatcher.service;
 
+import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import br.cin.ufpe.healthwatcher.exception.EmployeeAlreadyExistsException;
 import br.cin.ufpe.healthwatcher.model.Employee;
 
+@Stateless
 public class EmployeeService {
 
 	@Inject

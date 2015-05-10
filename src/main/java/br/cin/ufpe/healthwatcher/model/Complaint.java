@@ -34,8 +34,8 @@ public abstract class Complaint implements Serializable {
 	@Column(length = 100)
 	private String email;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "login")
+	@ManyToOne(optional=true)
+	@JoinColumn(name = "login", nullable=true)
 	private Employee atendente;
 
 	// TODO Verificar se o enum vai ser utilizado aqui
