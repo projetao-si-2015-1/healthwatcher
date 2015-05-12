@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -16,6 +18,9 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
+@NamedQueries({
+	@NamedQuery(name="animalComplaintByCode", query="SELECT a FROM AnimalComplaint a WHERE a.codigo = :code")
+})
 public class AnimalComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

@@ -1,6 +1,7 @@
 package br.cin.ufpe.healthwatcher.controller;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -12,6 +13,7 @@ import javax.inject.Inject;
 import br.cin.ufpe.healthwatcher.model.Address;
 import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.model.FoodComplaint;
+import br.cin.ufpe.healthwatcher.model.Situacao;
 import br.cin.ufpe.healthwatcher.service.FoodComplaintService;
 
 @ManagedBean
@@ -46,6 +48,8 @@ public class FoodComplaintController implements Serializable {
 	
 	public void salvar(){
 		try{
+			foodComplaint.setDataQueixa(new Date());
+			foodComplaint.setSituacao(Situacao.OPEN);
 			foodComplaintService.inserir(foodComplaint);
 			facesContext.addMessage(null, 
 									new FacesMessage(FacesMessage.SEVERITY_INFO, 

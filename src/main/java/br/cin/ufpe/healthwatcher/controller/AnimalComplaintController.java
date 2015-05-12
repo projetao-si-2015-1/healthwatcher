@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import br.cin.ufpe.healthwatcher.model.Address;
 import br.cin.ufpe.healthwatcher.model.AnimalComplaint;
 import br.cin.ufpe.healthwatcher.model.Employee;
+import br.cin.ufpe.healthwatcher.model.Situacao;
 import br.cin.ufpe.healthwatcher.service.AnimalComplaintService;
 
 @ManagedBean
@@ -49,6 +50,7 @@ public class AnimalComplaintController implements Serializable {
 		try{
 			this.animalComplaint.setDataParecer(new Date());
 			this.animalComplaint.setDataQueixa(new Date());
+			this.animalComplaint.setSituacao(Situacao.OPEN);
 			animalComplaintService.inserir(animalComplaint);
 			facesContext.addMessage(null, 
 									new FacesMessage(FacesMessage.SEVERITY_INFO, 

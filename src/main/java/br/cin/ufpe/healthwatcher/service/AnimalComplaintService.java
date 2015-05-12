@@ -5,6 +5,7 @@ import javax.enterprise.event.Event;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Session;
@@ -33,11 +34,23 @@ public class AnimalComplaintService {
 		EmployeeLogin employeeLogin = (EmployeeLogin) req.getSession().getAttribute("employeeLogin");
 		if(employeeLogin!=null && employeeLogin.isLogged()){
 			animalComplaint.setAtendente(employeeLogin.getEmployee());
+		} else {
+			animalComplaint.setAtendente(null);
 		}
 		log.info("Registrando animalComplaint sobre " + animalComplaint.getDescricao());
 		Session session = (Session) em.getDelegate();
 		session.persist(animalComplaint);
 		event.fire(animalComplaint);		
+	}
+
+	public AnimalComplaint find(Integer complaintCode) {
+		AnimalComplaint animalComplaint = null;
+		try{
+			animalComplaint = (AnimalComplaint) em.createNamedQuery("animalComplaintByCode").setParameter("code", complaintCode).getSingleResult();
+		} catch(NoResultException nre) {
+			log.warn("AnimalComplaint " + complaintCode + " não existe.");
+		}
+		return animalComplaint;
 	}
 
 }

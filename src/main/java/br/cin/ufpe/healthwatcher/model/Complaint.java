@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -38,9 +39,8 @@ public abstract class Complaint implements Serializable {
 	@JoinColumn(name = "login", nullable=true)
 	private Employee atendente;
 
-	// TODO Verificar se o enum vai ser utilizado aqui
-	@Column(nullable = false)
-	private int situacao;
+	@Enumerated
+	private Situacao situacao;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataParecer;
@@ -58,7 +58,7 @@ public abstract class Complaint implements Serializable {
 	
 	// TODO: Verificar o construtor
 	public Complaint(String solicitante, String descricao, String observacao, String email,
-			Employee atendente, int situacao, Date dataParecer, Date dataQueixa,
+			Employee atendente, Situacao situacao, Date dataParecer, Date dataQueixa,
 			Address enderecoSolicitante, long timestamp) {
 
 		//Numero fica vazio por enquanto - no Repositorio ele eh inicializado
@@ -139,11 +139,11 @@ public abstract class Complaint implements Serializable {
 		this.observacao = observacao;
 	}
 
-	public int getSituacao() {
+	public Situacao getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(int situacao) {
+	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
 	}
 

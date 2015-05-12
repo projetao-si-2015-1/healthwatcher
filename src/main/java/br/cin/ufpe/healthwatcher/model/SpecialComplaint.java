@@ -7,12 +7,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity implementation class for Entity: SpecialComplaint
  *
  */
 @Entity
+@NamedQueries({
+	@NamedQuery(name="specialComplaintByCode", query="SELECT s FROM SpecialComplaint s WHERE s.codigo = :code")
+})
 public class SpecialComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

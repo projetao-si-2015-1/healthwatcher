@@ -7,12 +7,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity implementation class for Entity: FoodComplaint
  *
  */
 @Entity
+@NamedQueries({
+	@NamedQuery(name="foodComplaintByCode", query="SELECT f FROM FoodComplaint f WHERE f.codigo = :code")
+})
 public class FoodComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

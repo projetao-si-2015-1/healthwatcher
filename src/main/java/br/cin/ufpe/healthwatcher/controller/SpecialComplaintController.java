@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.cin.ufpe.healthwatcher.model.Address;
+import br.cin.ufpe.healthwatcher.model.Situacao;
 import br.cin.ufpe.healthwatcher.model.SpecialComplaint;
 import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.service.SpecialComplaintService;
@@ -49,6 +50,7 @@ public class SpecialComplaintController implements Serializable {
 		try{
 			this.specialComplaint.setDataParecer(new Date());
 			this.specialComplaint.setDataQueixa(new Date());
+			this.specialComplaint.setSituacao(Situacao.OPEN);
 			specialComplaintService.inserir(specialComplaint);
 			facesContext.addMessage(null, 
 									new FacesMessage(FacesMessage.SEVERITY_INFO, 
