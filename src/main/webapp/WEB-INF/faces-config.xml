@@ -17,4 +17,7 @@
 			<var>messages</var>
 		</resource-bundle>
 	</application>
+	<lifecycle>
+	    <phase-listener>br.cin.ufpe.healthwatcher.LifeCycleListener</phase-listener>
+	</lifecycle>	
 </faces-config>

@@ -6,7 +6,7 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -17,7 +17,7 @@ import br.cin.ufpe.healthwatcher.model.Situacao;
 import br.cin.ufpe.healthwatcher.service.AnimalComplaintService;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class AnimalComplaintController implements Serializable {
 	
 	private static final long serialVersionUID = 7502327389893929089L;
