@@ -8,7 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -68,7 +67,7 @@ public class EmployeeLogin implements Serializable {
 		this.logged = crypto.matches(employee.getPassword(), emp.getPassword());
 		if(logged){
 			this.employee = emp;
-			return "/employee/menuEmployee.jsf?faces-redirect=true";
+			return "/employee/menuEmployee?faces-redirect=true";
 		} else {
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 									"Senha ou usuário incorretos.", "Login inválido!"));
@@ -77,15 +76,13 @@ public class EmployeeLogin implements Serializable {
 	}
 	
 	public String logout() {
-		HttpServletRequest req = (HttpServletRequest) facesContext.getExternalContext().getSession(false);
-		req.removeAttribute("login");
 		this.logged = false;
-		return "/home.jsf?faces-redirect=true";
+		return "/home?faces-redirect=true";
 	}
 
 	public String changeLoggedUser() {
 		this.logged = false;
-		return "/login.jsf?faces-redirect=true";
+		return "/login?faces-redirect=true";
 	}	
 	
 }
