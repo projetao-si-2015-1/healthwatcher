@@ -150,3 +150,8 @@ body {
 .specialtyTable{
 	list-style: none;
 }
+
+.divInsertedFoodComplaint{
+	font-size: 14px;
+	text-align: center;
+}

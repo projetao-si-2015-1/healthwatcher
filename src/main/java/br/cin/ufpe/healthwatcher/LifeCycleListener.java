@@ -10,7 +10,7 @@ public class LifeCycleListener implements PhaseListener {
 
 	@Override
 	public void afterPhase(PhaseEvent event) {
-		System.out.println("PHASE " + event.getPhaseId());
+		//System.out.println("PHASE " + event.getPhaseId());
 	}
 
 	@Override
