@@ -109,7 +109,7 @@ public class ComplaintController implements Serializable {
 			this.foodComplaintFlag = true;
 		}
 		this.noDataFound = this.animalComplaint==null && this.foodComplaint==null && this.specialComplaint==null;
-		return "/searchComplaintData.xhtml?faces-redirect=true";
+		return "searchComplaintData.jsf?faces-redirect=true";
 	}
 
 	public boolean isNoDataFound() {

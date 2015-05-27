@@ -68,7 +68,7 @@ public class HealthUnitController implements Serializable {
 	
 	public String searchSpecialties(){
 		if(selectedHealthUnit!=null){
-			return "/listSpecialtiesByHealthUnit.jsf";
+			return "listSpecialtiesByHealthUnit.jsf?faces-redirect=true";
 		} else {
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Selecione um health unit.", "Erro ao selecionar."));

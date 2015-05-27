@@ -16,22 +16,22 @@
 		  <h1>Complaint: <h:outputLabel value="#{complaintController.complaintCode}" /> </h1>
 
 		  <h:panelGroup rendered="#{complaintController.foodComplaintFlag}">
-		  	<ui:include src="/foodComplaintData.xhtml" />
+		  	<ui:include src="/queries/complaint/foodComplaintData.xhtml" />
 		  </h:panelGroup>
 		  
 		  <h:panelGroup rendered="#{complaintController.animalComplaintFlag}">
-		  	<ui:include src="/animalComplaintData.xhtml" />
+		  	<ui:include src="/queries/complaint/animalComplaintData.xhtml" />
 		  </h:panelGroup>
 
 		  <h:panelGroup rendered="#{complaintController.specialComplaintFlag}">
-		  	<ui:include src="/specialComplaintData.xhtml" />
+		  	<ui:include src="/queries/complaint/specialComplaintData.xhtml" />
 		  </h:panelGroup>		  
 		  
 		  <h:messages id="messages" styleClass="messages" />
 	  </h:form>   	  
 
    	  <center>
-	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/queriesMenu.jsf">
+	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/queries/queriesMenu.jsf">
 	   	  	Queries' Menu
 	   	  </h:outputLink>
    	  	  -   	  
