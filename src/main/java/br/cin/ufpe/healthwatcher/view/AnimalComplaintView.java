@@ -1,4 +1,4 @@
-package br.cin.ufpe.healthwatcher.controller;
+package br.cin.ufpe.healthwatcher.view;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +18,7 @@ import br.cin.ufpe.healthwatcher.service.AnimalComplaintService;
 
 @ManagedBean
 @ViewScoped
-public class AnimalComplaintController implements Serializable {
+public class AnimalComplaintView implements Serializable {
 	
 	private static final long serialVersionUID = 7502327389893929089L;
 
@@ -46,20 +46,18 @@ public class AnimalComplaintController implements Serializable {
 		this.animalComplaint = animalComplaint;
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		try{
 			this.animalComplaint.setDataParecer(new Date());
 			this.animalComplaint.setDataQueixa(new Date());
 			this.animalComplaint.setSituacao(Situacao.OPEN);
 			animalComplaintService.inserir(animalComplaint);
-			facesContext.addMessage(null, 
-									new FacesMessage(FacesMessage.SEVERITY_INFO, 
-													 "Registrado!", 
-													 "Registro bem sucedido."));
-			init();
+			facesContext.getExternalContext().getFlash().put("codigo", animalComplaint.getCodigo());
+			return "animalComplaintInserted?faces-redirect=true";
 		} catch(Exception e){
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Não foi possível registrar a reclamação!", "Registration mal sucedido"));			
+                    "Não foi possível registrar a reclamação!", "Registration mal sucedido"));
+            return "";
 		}
 	}
 

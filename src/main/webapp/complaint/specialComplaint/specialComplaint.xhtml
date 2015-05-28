@@ -9,84 +9,84 @@
    	  <h:form method="post">
 		<h:messages id="messages" styleClass="messages" />
    	  	<p>Complaint Description</p>
-   	  	<h:inputTextarea value="#{specialComplaintController.specialComplaint.descricao}" rows="4" cols="50" />
+   	  	<h:inputTextarea value="#{specialComplaintView.specialComplaint.descricao}" rows="4" cols="50" />
 
    	  	<p>Observations</p>
-   	  	<h:inputTextarea value="#{specialComplaintController.specialComplaint.observacao}" rows="2" cols="50" />
+   	  	<h:inputTextarea value="#{specialComplaintView.specialComplaint.observacao}" rows="2" cols="50" />
    	  	
    	  	<h3>Complainer Data</h3>
 		<p>Complainer name:
-		   <h:inputText value="#{specialComplaintController.specialComplaint.solicitante}" />
+		   <h:inputText value="#{specialComplaintView.specialComplaint.solicitante}" />
 		</p>
 		<div>
 			Address: 
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoSolicitante.street}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.street}" />
 			
 			Complement:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoSolicitante.complement}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.complement}" />
 		</div>
 		<p>
 			Province:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoSolicitante.neighbourhood}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.neighbourhood}" />
 		</p>
 		
 		<p>
 			City:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoSolicitante.city}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.city}" />
 			
 			State:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoSolicitante.state}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.state}" />
 			
 			ZIP Code:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoSolicitante.zip}" />			
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.zip}" />			
 		</p>
 		<p>
 			Phone Number:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoSolicitante.phone}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.phone}" />
 		</p>
 		<p>
 			E-mail:
-			<h:inputText value="#{specialComplaintController.specialComplaint.email}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.email}" />
 		</p>
 		
 		<h3>Event Information</h3>
 		<p>
 			Age:
-			<h:inputText value="#{specialComplaintController.specialComplaint.idade}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.idade}" />
 			
 			School Level:
-			<h:inputText value="#{specialComplaintController.specialComplaint.instrucao}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.instrucao}" />
 			
 			Occupation:
-			<h:inputText value="#{specialComplaintController.specialComplaint.ocupacao}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.ocupacao}" />
 		</p>
 		<p>
 			Event Address:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoOcorrencia.street}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.street}" />
 			
 			Complement:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoOcorrencia.complement}" />			
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.complement}" />			
 		</p>
 		<p>
 			Province:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoOcorrencia.neighbourhood}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.neighbourhood}" />
 		</p>
 		<p>
 			City:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoOcorrencia.city}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.city}" />
 			
 			State:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoOcorrencia.state}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.state}" />
 			
 			ZIP Code:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoOcorrencia.zip}" />			
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.zip}" />			
 		</p>
 		<p>
 			Phone number:
-			<h:inputText value="#{specialComplaintController.specialComplaint.enderecoOcorrencia.phone}" />
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.phone}" />
 		</p>
 		
-		<h:commandButton value="Insert" action="#{specialComplaintController.salvar()}" />
+		<h:commandButton style="margin: 10px;" value="Insert" action="#{specialComplaintView.salvar()}" />
 		<h:commandButton type="reset" value="Clear" />
    	  </h:form>   	  
    	  <center>

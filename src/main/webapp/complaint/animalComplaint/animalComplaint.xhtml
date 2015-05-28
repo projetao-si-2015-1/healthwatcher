@@ -9,86 +9,86 @@
    	  <h:form method="post">
 		<h:messages id="messages" styleClass="messages" />
    	  	<p>Complaint Description</p>
-   	  	<h:inputTextarea value="#{animalComplaintController.animalComplaint.descricao}" rows="4" cols="50" />
+   	  	<h:inputTextarea value="#{animalComplaintView.animalComplaint.descricao}" rows="4" cols="50" />
 
    	  	<p>Observations</p>
-   	  	<h:inputTextarea value="#{animalComplaintController.animalComplaint.observacao}" rows="2" cols="50" />
+   	  	<h:inputTextarea value="#{animalComplaintView.animalComplaint.observacao}" rows="2" cols="50" />
    	  	
    	  	<h3>Complainer Data</h3>
 		<p>Complainer name:
-		   <h:inputText value="#{animalComplaintController.animalComplaint.solicitante}" />
+		   <h:inputText value="#{animalComplaintView.animalComplaint.solicitante}" />
 		</p>
 		<div>
 			Address: 
-			<h:inputText value="#{animalComplaintController.animalComplaint.enderecoSolicitante.street}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.enderecoSolicitante.street}" />
 			
 			Complement:
-			<h:inputText value="#{animalComplaintController.animalComplaint.enderecoSolicitante.complement}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.enderecoSolicitante.complement}" />
 		</div>
 		<p>
 			Province:
-			<h:inputText value="#{animalComplaintController.animalComplaint.enderecoSolicitante.neighbourhood}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.enderecoSolicitante.neighbourhood}" />
 		</p>
 		
 		<p>
 			City:
-			<h:inputText value="#{animalComplaintController.animalComplaint.enderecoSolicitante.city}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.enderecoSolicitante.city}" />
 			
 			State:
-			<h:inputText value="#{animalComplaintController.animalComplaint.enderecoSolicitante.state}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.enderecoSolicitante.state}" />
 			
 			ZIP Code:
-			<h:inputText value="#{animalComplaintController.animalComplaint.enderecoSolicitante.zip}" />			
+			<h:inputText value="#{animalComplaintView.animalComplaint.enderecoSolicitante.zip}" />			
 		</p>
 		<p>
 			Phone Number:
-			<h:inputText value="#{animalComplaintController.animalComplaint.enderecoSolicitante.phone}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.enderecoSolicitante.phone}" />
 		</p>
 		<p>
 			E-mail:
-			<h:inputText value="#{animalComplaintController.animalComplaint.email}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.email}" />
 		</p>
 		
 		<h3>Animal Data</h3>
 		<p>
 			Animal Race:
-			<h:inputText value="#{animalComplaintController.animalComplaint.animal}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.animal}" />
 			
 			Quantity:
-			<h:inputText value="#{animalComplaintController.animalComplaint.animalQuantity}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.animalQuantity}" />
 		</p>
 		<p>
 			Event Date:
-			<h:inputText value="#{animalComplaintController.animalComplaint.inconvenienceDate}">
+			<h:inputText value="#{animalComplaintView.animalComplaint.inconvenienceDate}">
 				<f:convertDateTime pattern="dd/MM/yyyy" />
 			</h:inputText>
 		</p>
 		<p>
 			Event Address:
-			<h:inputText value="#{animalComplaintController.animalComplaint.occurenceLocalAddress.street}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.occurenceLocalAddress.street}" />
 			Complement:
-			<h:inputText value="#{animalComplaintController.animalComplaint.occurenceLocalAddress.complement}" />			
+			<h:inputText value="#{animalComplaintView.animalComplaint.occurenceLocalAddress.complement}" />			
 		</p>
 		<p>
 			Province:
-			<h:inputText value="#{animalComplaintController.animalComplaint.occurenceLocalAddress.neighbourhood}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.occurenceLocalAddress.neighbourhood}" />
 		</p>
 		<p>
 			City:
-			<h:inputText value="#{animalComplaintController.animalComplaint.occurenceLocalAddress.city}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.occurenceLocalAddress.city}" />
 			
 			State:
-			<h:inputText value="#{animalComplaintController.animalComplaint.occurenceLocalAddress.state}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.occurenceLocalAddress.state}" />
 			
 			ZIP Code:
-			<h:inputText value="#{animalComplaintController.animalComplaint.occurenceLocalAddress.zip}" />			
+			<h:inputText value="#{animalComplaintView.animalComplaint.occurenceLocalAddress.zip}" />			
 		</p>
 		<p>
 			Phone number:
-			<h:inputText value="#{animalComplaintController.animalComplaint.occurenceLocalAddress.phone}" />
+			<h:inputText value="#{animalComplaintView.animalComplaint.occurenceLocalAddress.phone}" />
 		</p>
 		
-		<h:commandButton value="Insert" action="#{animalComplaintController.salvar()}" />
+		<h:commandButton style="margin: 10px;" value="Insert" action="#{animalComplaintView.salvar()}" />
 		<h:commandButton type="reset" value="Clear" />
    	  </h:form>
    	  <center>
