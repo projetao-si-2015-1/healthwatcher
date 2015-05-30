@@ -5,6 +5,7 @@ import java.lang.Integer;
 import java.lang.String;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Entity implementation class for Entity: Address
@@ -29,12 +30,14 @@ public class Address implements Serializable {
 	@Column(length = 20)
 	private String zip;
 	
+	@NotNull
 	@Column(length = 100)
 	private String state;
 	
 	@Column(length = 20)
 	private String phone;
 	
+	@NotNull
 	@Column(length = 100)
 	private String city;
 	

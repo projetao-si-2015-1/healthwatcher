@@ -14,6 +14,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public abstract class Complaint implements Serializable {
@@ -23,15 +24,18 @@ public abstract class Complaint implements Serializable {
 	@GeneratedValue
 	private int codigo;
 
+	@NotNull
 	@Column(length = 100)
 	private String solicitante;
 
+	@NotNull
 	@Column(length = 200)
 	private String descricao;
 
 	@Column(length = 200)
 	private String observacao;
 
+	@NotNull
 	@Column(length = 100)
 	private String email;
 

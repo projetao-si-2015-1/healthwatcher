@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
 
 /**
  * Entity implementation class for Entity: FoodComplaint
@@ -27,9 +28,11 @@ public class FoodComplaint extends Complaint implements Serializable {
 	private Integer qtdeObitos;
 	
 	// TODO: Verificar se aqui nao deve ser usada HealthUnit.
+	@NotNull
 	@Column(length = 100)
 	private String localAtendimento;
 	
+	@NotNull
 	@Column(length = 100)
 	private String refeicaoSuspeita;
 	
