@@ -3,6 +3,8 @@ package br.cin.ufpe.healthwatcher.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,8 +38,7 @@ public class AnimalComplaint extends Complaint implements Serializable {
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "code")
 	private Address occurenceLocalAddress;
-
-
+	
 	public AnimalComplaint() {
 		super();
 	}   
