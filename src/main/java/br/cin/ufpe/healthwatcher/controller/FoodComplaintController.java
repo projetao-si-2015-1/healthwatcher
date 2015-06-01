@@ -1,4 +1,4 @@
-package br.cin.ufpe.healthwatcher.view;
+package br.cin.ufpe.healthwatcher.controller;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +18,7 @@ import br.cin.ufpe.healthwatcher.service.FoodComplaintService;
 
 @ManagedBean
 @ViewScoped
-public class FoodComplaintView implements Serializable {
+public class FoodComplaintController implements Serializable {
 	
 	private static final long serialVersionUID = -396582813699440065L;
 
@@ -52,6 +52,7 @@ public class FoodComplaintView implements Serializable {
 			foodComplaint.setSituacao(Situacao.OPEN);
 			foodComplaintService.inserir(foodComplaint);
 			facesContext.getExternalContext().getFlash().put("codigo", foodComplaint.getCodigo());
+			init();
 			return "foodComplaintInserted?faces-redirect=true";
 		} catch(Exception e){
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,

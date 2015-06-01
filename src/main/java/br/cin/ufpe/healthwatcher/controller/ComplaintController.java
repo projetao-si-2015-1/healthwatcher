@@ -2,8 +2,7 @@ package br.cin.ufpe.healthwatcher.controller;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import br.cin.ufpe.healthwatcher.model.AnimalComplaint;
@@ -13,8 +12,7 @@ import br.cin.ufpe.healthwatcher.service.AnimalComplaintService;
 import br.cin.ufpe.healthwatcher.service.FoodComplaintService;
 import br.cin.ufpe.healthwatcher.service.SpecialComplaintService;
 
-@ManagedBean
-@SessionScoped
+@ApplicationScoped
 public class ComplaintController implements Serializable {
 
 	private static final long serialVersionUID = -6887424307646650506L;

@@ -10,101 +10,101 @@
    	  <h:form method="post">
    	  	<h:messages id="messages" styleClass="messages" />
    	  	<p>Complaint Description</p>
-   	  	<h:inputTextarea value="#{foodComplaintView.foodComplaint.descricao}" rows="4" cols="50" />
+   	  	<h:inputTextarea value="#{facade.foodComplaintView.foodComplaint.descricao}" rows="4" cols="50" />
 
    	  	<p>Observations</p>
-   	  	<h:inputTextarea value="#{foodComplaintView.foodComplaint.observacao}" rows="2" cols="50" />
+   	  	<h:inputTextarea value="#{facade.foodComplaintView.foodComplaint.observacao}" rows="2" cols="50" />
    	  	
    	  	<h3>Complainer Data</h3>
 		<p>Complainer name:
-		   <h:inputText value="#{foodComplaintView.foodComplaint.solicitante}" />
+		   <h:inputText value="#{facade.foodComplaintView.foodComplaint.solicitante}" />
 		</p>
 		<div>
 			Address: 
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoSolicitante.street}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.street}" />
 			
 			Complement:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoSolicitante.complement}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.complement}" />
 		</div>
 		<p>
 			Province:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoSolicitante.neighbourhood}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.neighbourhood}" />
 		</p>
 		
 		<p>
 			City:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoSolicitante.city}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.city}" />
 			
 			State:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoSolicitante.state}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.state}" />
 			
 			ZIP Code:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoSolicitante.zip}" />			
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.zip}" />			
 		</p>
 		<p>
 			Phone Number:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoSolicitante.phone}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.phone}" />
 		</p>
 		<p>
 			E-mail:
-			<h:inputText value="#{foodComplaintView.foodComplaint.email}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.email}" />
 		</p>
 		
 		<h3>Victim Information</h3>
 		<p>
 			Name:
-			<h:inputText value="#{foodComplaintView.foodComplaint.nomeVitima}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.nomeVitima}" />
 		</p>
 		<p>
 			Address:
-		   <h:inputText value="#{foodComplaintView.foodComplaint.enderecoDoente.street}" />
+		   <h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.street}" />
 		   
 		   Complement:
-		   <h:inputText value="#{foodComplaintView.foodComplaint.enderecoDoente.complement}" />
+		   <h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.complement}" />
 		</p>
 		<p>
 			Province:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoDoente.neighbourhood}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.neighbourhood}" />
 		</p>
 		<p>
 			Closest City:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoDoente.city}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.city}" />
 			
 			State:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoDoente.state}" />
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.state}" />
 			
 			ZIP Code:
-			<h:inputText value="#{foodComplaintView.foodComplaint.enderecoDoente.zip}" />			
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.zip}" />			
    	  	</p>
    	  	<p>
    	  		Telephone:
-   	  		<h:inputText value="#{foodComplaintView.foodComplaint.enderecoDoente.phone}" />
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.phone}" />
    	  	</p>
    	  	
    	  	<h3>Event Information</h3>
    	  	<p>
    	  		Amount of people that ate the meal:
-   	  		<h:inputText value="#{foodComplaintView.foodComplaint.qtdeComensais}" />
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeComensais}" />
    	  		
    	  		Amount of sick people:
-   	  		<h:inputText value="#{foodComplaintView.foodComplaint.qtdeDoentes}" />   	  		
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeDoentes}" />   	  		
    	  	</p>
    	  	<p>
    	  		Amount of people checked into a hospital:
-   	  		<h:inputText value="#{foodComplaintView.foodComplaint.qtdeInternacoes}" />
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeInternacoes}" />
    	  		
    	  		Amount of death:
-   	  		<h:inputText value="#{foodComplaintView.foodComplaint.qtdeObitos}" />   	  		
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeObitos}" />   	  		
    	  	</p>
    	  	<p>
    	  		Place of medical care:
-   	  		<h:inputText value="#{foodComplaintView.foodComplaint.localAtendimento}" />
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.localAtendimento}" />
    	  		
    	  		Suspicous meal:
-   	  		<h:inputText value="#{foodComplaintView.foodComplaint.refeicaoSuspeita}" />   	  		
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.refeicaoSuspeita}" />   	  		
    	  	</p>
    	  	
-		<h:commandButton style="margin: 10px;" value="Insert" action="#{foodComplaintView.salvar()}" />
+		<h:commandButton style="margin: 10px;" value="Insert" action="#{facade.foodComplaintView.salvar()}" />
 		<h:commandButton type="reset" value="Clear" />
    	  </h:form>
    	  

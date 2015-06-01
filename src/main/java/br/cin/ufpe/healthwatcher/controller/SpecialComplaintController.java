@@ -1,4 +1,4 @@
-package br.cin.ufpe.healthwatcher.view;
+package br.cin.ufpe.healthwatcher.controller;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +18,7 @@ import br.cin.ufpe.healthwatcher.service.SpecialComplaintService;
 
 @ManagedBean
 @ViewScoped
-public class SpecialComplaintView implements Serializable {
+public class SpecialComplaintController implements Serializable {
 	
 	private static final long serialVersionUID = -5104908221615000012L;
 
