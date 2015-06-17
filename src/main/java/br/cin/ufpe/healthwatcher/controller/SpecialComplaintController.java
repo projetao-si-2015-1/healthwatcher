@@ -6,18 +6,18 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.cin.ufpe.healthwatcher.model.Address;
+import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.model.Situacao;
 import br.cin.ufpe.healthwatcher.model.SpecialComplaint;
-import br.cin.ufpe.healthwatcher.model.Employee;
 import br.cin.ufpe.healthwatcher.service.SpecialComplaintService;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class SpecialComplaintController implements Serializable {
 	
 	private static final long serialVersionUID = -5104908221615000012L;
@@ -46,20 +46,18 @@ public class SpecialComplaintController implements Serializable {
 		this.specialComplaint = specialComplaint;
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		try{
 			this.specialComplaint.setDataParecer(new Date());
 			this.specialComplaint.setDataQueixa(new Date());
 			this.specialComplaint.setSituacao(Situacao.OPEN);
 			specialComplaintService.inserir(specialComplaint);
-			facesContext.addMessage(null, 
-									new FacesMessage(FacesMessage.SEVERITY_INFO, 
-													 "Registrado!", 
-													 "Registro bem sucedido."));
-			init();
+			facesContext.getExternalContext().getFlash().put("codigo", specialComplaint.getCodigo());
+			return "specialComplaintInserted?faces-redirect=true";
 		} catch(Exception e){
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Não foi possível registrar a reclamação!", "Registration mal sucedido"));			
+                    "Não foi possível registrar a reclamação!", "Registration mal sucedido"));
+            return "";
 		}
 	}
 

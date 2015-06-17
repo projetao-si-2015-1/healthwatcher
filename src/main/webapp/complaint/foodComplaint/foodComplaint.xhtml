@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/template.xhtml">
+   <ui:define name="content">
+   	  <h1>Food Complaint</h1>
+   	  
+   	  <h:form method="post">
+   	  	<h:messages id="messages" styleClass="messages" />
+   	  	<p>Complaint Description</p>
+   	  	<h:inputTextarea value="#{facade.foodComplaintView.foodComplaint.descricao}" rows="4" cols="50" />
+
+   	  	<p>Observations</p>
+   	  	<h:inputTextarea value="#{facade.foodComplaintView.foodComplaint.observacao}" rows="2" cols="50" />
+   	  	
+   	  	<h3>Complainer Data</h3>
+		<p>Complainer name:
+		   <h:inputText value="#{facade.foodComplaintView.foodComplaint.solicitante}" />
+		</p>
+		<div>
+			Address: 
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.street}" />
+			
+			Complement:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.complement}" />
+		</div>
+		<p>
+			Province:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.neighbourhood}" />
+		</p>
+		
+		<p>
+			City:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.city}" />
+			
+			State:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.state}" />
+			
+			ZIP Code:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.zip}" />			
+		</p>
+		<p>
+			Phone Number:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoSolicitante.phone}" />
+		</p>
+		<p>
+			E-mail:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.email}" />
+		</p>
+		
+		<h3>Victim Information</h3>
+		<p>
+			Name:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.nomeVitima}" />
+		</p>
+		<p>
+			Address:
+		   <h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.street}" />
+		   
+		   Complement:
+		   <h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.complement}" />
+		</p>
+		<p>
+			Province:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.neighbourhood}" />
+		</p>
+		<p>
+			Closest City:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.city}" />
+			
+			State:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.state}" />
+			
+			ZIP Code:
+			<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.zip}" />			
+   	  	</p>
+   	  	<p>
+   	  		Telephone:
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.enderecoDoente.phone}" />
+   	  	</p>
+   	  	
+   	  	<h3>Event Information</h3>
+   	  	<p>
+   	  		Amount of people that ate the meal:
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeComensais}" />
+   	  		
+   	  		Amount of sick people:
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeDoentes}" />   	  		
+   	  	</p>
+   	  	<p>
+   	  		Amount of people checked into a hospital:
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeInternacoes}" />
+   	  		
+   	  		Amount of death:
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.qtdeObitos}" />   	  		
+   	  	</p>
+   	  	<p>
+   	  		Place of medical care:
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.localAtendimento}" />
+   	  		
+   	  		Suspicous meal:
+   	  		<h:inputText value="#{facade.foodComplaintView.foodComplaint.refeicaoSuspeita}" />   	  		
+   	  	</p>
+   	  	
+		<h:commandButton style="margin: 10px;" value="Insert" action="#{facade.foodComplaintView.salvar()}" />
+		<h:commandButton type="reset" value="Clear" />
+   	  </h:form>
+   	  
+   	  <center>
+	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
+	   	  	Main Menu
+	   	  </h:outputLink>
+	  </center>
+   </ui:define>
+</ui:composition>

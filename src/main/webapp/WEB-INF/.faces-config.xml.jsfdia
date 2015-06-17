@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:#searchHealthUnitBySpecialty.xhtml"
@@ -18,3 +19,6 @@
 =======
 <PROCESS model-entity="JSFProcess"/>
 >>>>>>> Stashed changes
+=======
+<PROCESS model-entity="JSFProcess"/>
+>>>>>>> 8e806d6c0869bc6f634d33d01cc1f1c908d23a98

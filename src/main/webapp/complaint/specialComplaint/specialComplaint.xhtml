@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/template.xhtml">
+   <ui:define name="content">
+   	  <h1>Special Complaint</h1>
+   	  <h:form method="post">
+		<h:messages id="messages" styleClass="messages" />
+   	  	<p>Complaint Description</p>
+   	  	<h:inputTextarea value="#{specialComplaintView.specialComplaint.descricao}" rows="4" cols="50" />
+
+   	  	<p>Observations</p>
+   	  	<h:inputTextarea value="#{specialComplaintView.specialComplaint.observacao}" rows="2" cols="50" />
+   	  	
+   	  	<h3>Complainer Data</h3>
+		<p>Complainer name:
+		   <h:inputText value="#{specialComplaintView.specialComplaint.solicitante}" />
+		</p>
+		<div>
+			Address: 
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.street}" />
+			
+			Complement:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.complement}" />
+		</div>
+		<p>
+			Province:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.neighbourhood}" />
+		</p>
+		
+		<p>
+			City:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.city}" />
+			
+			State:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.state}" />
+			
+			ZIP Code:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.zip}" />			
+		</p>
+		<p>
+			Phone Number:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoSolicitante.phone}" />
+		</p>
+		<p>
+			E-mail:
+			<h:inputText value="#{specialComplaintView.specialComplaint.email}" />
+		</p>
+		
+		<h3>Event Information</h3>
+		<p>
+			Age:
+			<h:inputText value="#{specialComplaintView.specialComplaint.idade}" />
+			
+			School Level:
+			<h:inputText value="#{specialComplaintView.specialComplaint.instrucao}" />
+			
+			Occupation:
+			<h:inputText value="#{specialComplaintView.specialComplaint.ocupacao}" />
+		</p>
+		<p>
+			Event Address:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.street}" />
+			
+			Complement:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.complement}" />			
+		</p>
+		<p>
+			Province:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.neighbourhood}" />
+		</p>
+		<p>
+			City:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.city}" />
+			
+			State:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.state}" />
+			
+			ZIP Code:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.zip}" />			
+		</p>
+		<p>
+			Phone number:
+			<h:inputText value="#{specialComplaintView.specialComplaint.enderecoOcorrencia.phone}" />
+		</p>
+		
+		<h:commandButton style="margin: 10px;" value="Insert" action="#{specialComplaintView.salvar()}" />
+		<h:commandButton type="reset" value="Clear" />
+   	  </h:form>   	  
+   	  <center>
+	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
+	   	  	Main Menu
+	   	  </h:outputLink>
+	  </center>
+   </ui:define>
+</ui:composition>

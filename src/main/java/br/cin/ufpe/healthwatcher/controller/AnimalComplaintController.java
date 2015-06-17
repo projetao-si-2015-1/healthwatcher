@@ -46,20 +46,19 @@ public class AnimalComplaintController implements Serializable {
 		this.animalComplaint = animalComplaint;
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		try{
 			this.animalComplaint.setDataParecer(new Date());
 			this.animalComplaint.setDataQueixa(new Date());
 			this.animalComplaint.setSituacao(Situacao.OPEN);
 			animalComplaintService.inserir(animalComplaint);
-			facesContext.addMessage(null, 
-									new FacesMessage(FacesMessage.SEVERITY_INFO, 
-													 "Registrado!", 
-													 "Registro bem sucedido."));
+			facesContext.getExternalContext().getFlash().put("codigo", animalComplaint.getCodigo());
 			init();
+			return "animalComplaintInserted?faces-redirect=true";
 		} catch(Exception e){
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Não foi possível registrar a reclamação!", "Registration mal sucedido"));			
+                    "Não foi possível registrar a reclamação!", "Registration mal sucedido"));
+            return "";
 		}
 	}
 
