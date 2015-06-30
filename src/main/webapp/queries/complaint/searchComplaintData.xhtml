@@ -6,24 +6,24 @@
    template="/WEB-INF/templates/template.xhtml">
    <ui:define name="content">
 	  
-	  <h:form id="formNoResult" rendered="#{complaintController.noDataFound}">
+	  <h:form id="formNoResult" rendered="#{facade.complaintController.noDataFound}">
 		  <h2>Queries - Error Message</h2>
-		  <h:outputLabel value="Complaint #{complaintController.complaintCode} not found" />
+		  <h:outputLabel value="Complaint #{facade.complaintController.complaintCode} not found" />
 	  </h:form>   	  
 
-	  <h:form id="form" rendered="#{!complaintController.noDataFound}">
+	  <h:form id="form" rendered="#{!facade.complaintController.noDataFound}">
 		  <h1>Search response:</h1>
-		  <h1>Complaint: <h:outputLabel value="#{complaintController.complaintCode}" /> </h1>
+		  <h1>Complaint: <h:outputLabel value="#{facade.complaintController.complaintCode}" /> </h1>
 
-		  <h:panelGroup rendered="#{complaintController.foodComplaintFlag}">
+		  <h:panelGroup rendered="#{facade.complaintController.foodComplaintFlag}">
 		  	<ui:include src="/queries/complaint/foodComplaintData.xhtml" />
 		  </h:panelGroup>
 		  
-		  <h:panelGroup rendered="#{complaintController.animalComplaintFlag}">
+		  <h:panelGroup rendered="#{facade.complaintController.animalComplaintFlag}">
 		  	<ui:include src="/queries/complaint/animalComplaintData.xhtml" />
 		  </h:panelGroup>
 
-		  <h:panelGroup rendered="#{complaintController.specialComplaintFlag}">
+		  <h:panelGroup rendered="#{facade.complaintController.specialComplaintFlag}">
 		  	<ui:include src="/queries/complaint/specialComplaintData.xhtml" />
 		  </h:panelGroup>		  
 		  

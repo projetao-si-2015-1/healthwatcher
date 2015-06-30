@@ -11,26 +11,26 @@
 		  <h1>Disease</h1>
 
 		  <h2>
-		  	Name: <h:outputLabel value="#{diseaseController.selectedDiseaseType.name}" />
+		  	Name: <h:outputLabel value="#{facade.diseaseController.selectedDiseaseType.name}" />
 		  </h2>
 		  
 		  <p>
-		  	Description: <h:outputLabel value="#{diseaseController.selectedDiseaseType.description}" />
+		  	Description: <h:outputLabel value="#{facade.diseaseController.selectedDiseaseType.description}" />
 		  </p>
 		  
 		  <p>
-		  	How manifests: <h:outputLabel value="#{diseaseController.selectedDiseaseType.manifestation}" />
+		  	How manifests: <h:outputLabel value="#{facade.diseaseController.selectedDiseaseType.manifestation}" />
 		  </p>		  
 
 		  <p>
-		  	Duration: <h:outputLabel value="#{diseaseController.selectedDiseaseType.duration}" />
+		  	Duration: <h:outputLabel value="#{facade.diseaseController.selectedDiseaseType.duration}" />
 		  </p>
 			
 		  <p>
 		  	Symptoms:
 		  </p>
 		  
-		  <h:dataTable value="#{diseaseController.selectedDiseaseType.symptoms}" var="symptom">
+		  <h:dataTable value="#{facade.diseaseController.selectedDiseaseType.symptoms}" var="symptom">
 		  	<h:column>
 		  		<h:outputText value="#{symptom.description}" />
 		  	</h:column>

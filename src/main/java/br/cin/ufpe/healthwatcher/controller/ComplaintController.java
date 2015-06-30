@@ -2,7 +2,8 @@ package br.cin.ufpe.healthwatcher.controller;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import br.cin.ufpe.healthwatcher.model.AnimalComplaint;
@@ -12,7 +13,8 @@ import br.cin.ufpe.healthwatcher.service.AnimalComplaintService;
 import br.cin.ufpe.healthwatcher.service.FoodComplaintService;
 import br.cin.ufpe.healthwatcher.service.SpecialComplaintService;
 
-@ApplicationScoped
+@ManagedBean
+@ViewScoped
 public class ComplaintController implements Serializable {
 
 	private static final long serialVersionUID = -6887424307646650506L;
@@ -107,7 +109,7 @@ public class ComplaintController implements Serializable {
 			this.foodComplaintFlag = true;
 		}
 		this.noDataFound = this.animalComplaint==null && this.foodComplaint==null && this.specialComplaint==null;
-		return "searchComplaintData.jsf?faces-redirect=true";
+		return "searchComplaintData?faces-redirect=true";
 	}
 
 	public boolean isNoDataFound() {

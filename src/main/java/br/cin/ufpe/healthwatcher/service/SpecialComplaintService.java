@@ -1,5 +1,7 @@
 package br.cin.ufpe.healthwatcher.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.faces.context.FacesContext;
@@ -13,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.cin.ufpe.healthwatcher.controller.EmployeeLogin;
+import br.cin.ufpe.healthwatcher.model.Situacao;
 import br.cin.ufpe.healthwatcher.model.SpecialComplaint;
 
 @Stateless
@@ -51,6 +54,20 @@ public class SpecialComplaintService {
 			log.warn("SpecialComplaint " + complaintCode + " não existe.");
 		}
 		return specialComplaint;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<SpecialComplaint> listSpecialComplaints() {
+		List<SpecialComplaint> lista = em.createNamedQuery("allSpecialComplaints").getResultList();
+		return lista;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<SpecialComplaint> listSpecialComplaintsBySituation(Situacao s) {
+		List<SpecialComplaint> lista = em.createNamedQuery("specialComplaintsBySituation")
+										 .setParameter("situacao", s)
+										 .getResultList();
+		return lista;
 	}
 
 }

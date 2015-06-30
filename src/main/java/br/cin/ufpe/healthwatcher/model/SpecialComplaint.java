@@ -16,7 +16,9 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name="specialComplaintByCode", query="SELECT s FROM SpecialComplaint s WHERE s.codigo = :code")
+	@NamedQuery(name="specialComplaintByCode", query="SELECT s FROM SpecialComplaint s WHERE s.codigo = :code"),
+	@NamedQuery(name="allSpecialComplaints", query="SELECT s FROM SpecialComplaint s"),
+	@NamedQuery(name="specialComplaintsBySituation", query="SELECT s FROM SpecialComplaint s WHERE s.situacao = :situacao")
 })
 public class SpecialComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;

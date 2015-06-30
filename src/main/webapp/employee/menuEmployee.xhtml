@@ -41,7 +41,7 @@
 	   	  <ul>
 	   	  	<li>
 	   	  		<h:outputLink>
-	   	  			<h:commandLink action="#{employeeLogin.changeLoggedUser()}" value="Change logged employee" />
+	   	  			<h:commandLink action="#{facade.employeeLogin.changeLoggedUser()}" value="Change logged employee" />
 	   	  		</h:outputLink>
 	   	  	</li>
 	   	  </ul>	   	  
@@ -50,7 +50,7 @@
 		   	  	Main Menu
 		   	  </h:outputLink>
 			  <h:outputLink style="margin-left: 5px;" title="Sair">
-				<h:commandLink action="#{employeeLogin.logout()}" value="Sair" />
+				<h:commandLink action="#{facade.employeeLogin.logout()}" value="Sair" />
 			  </h:outputLink>
 		  </center>
 	 </h:form>

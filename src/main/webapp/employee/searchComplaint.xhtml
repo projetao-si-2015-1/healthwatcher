@@ -10,7 +10,7 @@
 	  	Choose a complaint:
 	  </p>
    	  <h:form>
-	  	<p class="noComplaint">There isn't any complaints.</p>
+	  	<h:outputText value="There isn't any complaints." styleClass="noComplaint" rendered="#{facade.complaintController.noDataFound}" />
 	  	
 	   	  <center>
 		   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/employee/menuEmployee.jsf">

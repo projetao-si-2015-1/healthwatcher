@@ -1,5 +1,7 @@
 package br.cin.ufpe.healthwatcher.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.faces.context.FacesContext;
@@ -14,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import br.cin.ufpe.healthwatcher.controller.EmployeeLogin;
 import br.cin.ufpe.healthwatcher.model.FoodComplaint;
+import br.cin.ufpe.healthwatcher.model.Situacao;
 
 @Stateless
 public class FoodComplaintService {
@@ -54,4 +57,18 @@ public class FoodComplaintService {
 		return foodComplaint;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<FoodComplaint> listFoodComplaints() {
+		List<FoodComplaint> lista = em.createNamedQuery("allFoodComplaints").getResultList();
+		return lista;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<FoodComplaint> listFoodComplaintsBySituation(Situacao s) {
+		List<FoodComplaint> lista = em.createNamedQuery("allFoodComplaintsBySituation")
+									  .setParameter("situacao", s)
+									  .getResultList();
+		return lista;
+	}	
+	
 }

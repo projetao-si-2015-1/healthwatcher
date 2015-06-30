@@ -2,6 +2,7 @@ package br.cin.ufpe.healthwatcher.filter;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -11,10 +12,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.cin.ufpe.healthwatcher.controller.EmployeeLogin;
+import br.cin.ufpe.healthwatcher.facade.Facade;
 
 public class LoginFilter implements Filter {
 
+	@Inject
+	private Facade fachada;
+	
 	@Override
 	public void destroy() {
 	}
@@ -25,11 +29,10 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
-		EmployeeLogin employeeLogin = (EmployeeLogin) req.getSession().getAttribute("employeeLogin");
 		String url = req.getRequestURI();
 		
 		//se não tiver logado 
-		if(employeeLogin == null || !employeeLogin.isLogged()){
+		if(fachada.getEmployeeLogin() == null || !fachada.getEmployeeLogin().isLogged()){
 			if(url.indexOf("/employee/") >= 0){
 				res.sendRedirect(req.getServletContext().getContextPath()+"/login.jsf");
 			} else {
@@ -38,9 +41,9 @@ public class LoginFilter implements Filter {
 		} else {
 			String login = (String) req.getSession().getAttribute("login");
 			if(login==null){
-				req.getSession().setAttribute("login", employeeLogin.getEmployee().getLogin());
+				req.getSession().setAttribute("login", fachada.getEmployeeLogin().getEmployee().getLogin());
 			}
-			if(employeeLogin.isLogged() && url.indexOf("login.jsf") >= 0){
+			if(fachada.getEmployeeLogin().isLogged() && url.indexOf("login.jsf") >= 0){
 				res.sendRedirect(req.getServletContext().getContextPath()+"/employee/menuEmployee.jsf");
 			} else {
 				chain.doFilter(request, response);

@@ -19,7 +19,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name="animalComplaintByCode", query="SELECT a FROM AnimalComplaint a WHERE a.codigo = :code")
+	@NamedQuery(name="animalComplaintByCode", query="SELECT a FROM AnimalComplaint a WHERE a.codigo = :code"),
+	@NamedQuery(name="allAnimalComplaints", query="SELECT a FROM AnimalComplaint a"),
+	@NamedQuery(name="animalComplaintsBySituation", query="SELECT a FROM AnimalComplaint a WHERE a.situacao = :situacao"),
 })
 public class AnimalComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
