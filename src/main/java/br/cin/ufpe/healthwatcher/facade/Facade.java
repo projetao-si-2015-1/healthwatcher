@@ -12,6 +12,7 @@ import br.cin.ufpe.healthwatcher.controller.EmployeeLogin;
 import br.cin.ufpe.healthwatcher.controller.FoodComplaintController;
 import br.cin.ufpe.healthwatcher.controller.HealthUnitController;
 import br.cin.ufpe.healthwatcher.controller.MedicalSpecialtyController;
+import br.cin.ufpe.healthwatcher.controller.SearchComplaintController;
 import br.cin.ufpe.healthwatcher.controller.SpecialComplaintController;
 
 @Singleton
@@ -35,6 +36,9 @@ public class Facade {
 	
 	@Inject
 	private ComplaintController complaintController;
+	
+	@Inject
+	private SearchComplaintController searchComplaintController;
 	
 	@Inject
 	private DiseaseController diseaseController;
@@ -85,6 +89,13 @@ public class Facade {
 			complaintController = new ComplaintController();
 		}
 		return complaintController;
+	}
+	
+	public SearchComplaintController getSearchComplaintController(){
+		if(searchComplaintController==null){
+			searchComplaintController = new SearchComplaintController();
+		}
+		return searchComplaintController;
 	}
 
 	public DiseaseController getDiseaseController() {

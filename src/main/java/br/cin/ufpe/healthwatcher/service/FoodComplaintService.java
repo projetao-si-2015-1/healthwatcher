@@ -32,6 +32,13 @@ public class FoodComplaintService {
 	@Inject
 	private FacesContext facesContext;
 	
+	public void update(FoodComplaint foodComplaint){
+		log.info("Atualizando complaint " + foodComplaint.getDescricao());
+		foodComplaint.setSituacao(Situacao.CLOSED);
+		Session session = (Session) em.getDelegate();
+		session.merge(foodComplaint);
+	}
+	
 	public void inserir(FoodComplaint foodComplaint){
 		HttpServletRequest req = (HttpServletRequest) facesContext.getExternalContext().getRequest();
 		EmployeeLogin employeeLogin = (EmployeeLogin) req.getSession().getAttribute("employeeLogin");

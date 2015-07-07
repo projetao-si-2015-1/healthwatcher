@@ -45,6 +45,13 @@ public class AnimalComplaintService {
 		session.persist(animalComplaint);
 		event.fire(animalComplaint);		
 	}
+	
+	public void update(AnimalComplaint animalComplaint){
+		log.info("Atualizando complaint " + animalComplaint.getDescricao());
+		animalComplaint.setSituacao(Situacao.CLOSED);
+		Session session = (Session) em.getDelegate();
+		session.merge(animalComplaint);
+	}	
 
 	public AnimalComplaint find(Integer complaintCode) {
 		AnimalComplaint animalComplaint = null;

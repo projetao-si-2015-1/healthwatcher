@@ -45,6 +45,13 @@ public class SpecialComplaintService {
 		session.persist(specialComplaint);
 		event.fire(specialComplaint);				
 	}
+	
+	public void update(SpecialComplaint specialComplaint){
+		log.info("Atualizando complaint " + specialComplaint.getDescricao());
+		specialComplaint.setSituacao(Situacao.CLOSED);
+		Session session = (Session) em.getDelegate();
+		session.merge(specialComplaint);
+	}	
 
 	public SpecialComplaint find(Integer complaintCode) {
 		SpecialComplaint specialComplaint = null;
