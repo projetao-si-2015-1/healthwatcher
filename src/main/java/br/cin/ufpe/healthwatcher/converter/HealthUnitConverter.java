@@ -33,8 +33,11 @@ public class HealthUnitConverter implements Converter, Serializable {
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,	Object value) {
-		String code = String.valueOf(((HealthUnit) value).getCode());
-		return code;
+		if(value instanceof HealthUnit){
+			return String.valueOf(((HealthUnit) value).getCode());
+		} else {
+			return null;
+		}
 	}
 
 }

@@ -5,24 +5,10 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/template.xhtml">
    <ui:define name="content">
-	  <h1>
-	  	Queries: <br />
-	  	Querie about complaint
-	  </h1>
-	  <p>
-	  	Choose a complaint:
-	  </p>
    	  <h:form>
-	  	  <h:panelGroup rendered="#{healthUnitEdit.healthUnits.size()==0}">
-	  	  	<p class="noComplaint">There isn't any health units.</p>
-	  	  </h:panelGroup>
-	  	  <h:selectOneMenu value="#{healthUnitEdit.selectedHealthUnit}" converter="#{healthUnitConverter}" >
-	  	  	<f:selectItems value="#{healthUnitEdit.healthUnits}" var="hu" itemValue="#{hu}" itemLabel="#{hu.description}" />
-	  	  	<f:ajax event="change" />
-	  	  </h:selectOneMenu>
+	  	  <center><p style="font-size: 16px">Operation executed</p></center>
+	  	  <h:outputText style="text-align: center;" value="Health Unit updated" />
 	  	  
-	  	  <h:commandButton action="#{healthUnitEdit.editHealthUnit()}" value="Search" />
-	  	
 	   	  <center>
 		   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/employee/menuEmployee.jsf">
 		   	  	Employee's Menu

@@ -47,5 +47,9 @@ public class HealthUnitService {
 		HealthUnit hu = em.find(HealthUnit.class, Integer.parseInt(value));
 		return hu;
 	}
+	
+	public void update(HealthUnit healthUnit){
+		em.merge(healthUnit);
+	}
 
 }

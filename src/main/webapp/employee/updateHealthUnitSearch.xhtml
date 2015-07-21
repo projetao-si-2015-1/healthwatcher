@@ -6,22 +6,24 @@
    template="/WEB-INF/templates/template.xhtml">
    <ui:define name="content">
 	  <h1>
-	  	Queries: <br />
-	  	Querie about complaint
+	  	Update Health unit:
 	  </h1>
 	  <p>
-	  	Choose a complaint:
+	  	Unit: <h:outputText value="#{healthUnitEdit.selectedHealthUnit.code}" />
 	  </p>
+	  
+	  <f:metadata>
+	  	<f:viewParam name="healthUnit" value="#{healthUnitEdit.selectedHealthUnit}" converter="#{healthUnitConverter}" />
+	  </f:metadata>
+	  
    	  <h:form>
-	  	  <h:panelGroup rendered="#{healthUnitEdit.healthUnits.size()==0}">
-	  	  	<p class="noComplaint">There isn't any health units.</p>
-	  	  </h:panelGroup>
-	  	  <h:selectOneMenu value="#{healthUnitEdit.selectedHealthUnit}" converter="#{healthUnitConverter}" >
-	  	  	<f:selectItems value="#{healthUnitEdit.healthUnits}" var="hu" itemValue="#{hu}" itemLabel="#{hu.description}" />
-	  	  	<f:ajax event="change" />
-	  	  </h:selectOneMenu>
-	  	  
-	  	  <h:commandButton action="#{healthUnitEdit.editHealthUnit()}" value="Search" />
+	  	  <h:panelGrid>
+		  	  <h:outputLabel style="text-align: center;" value="Name:" />
+		  	  <h:inputText size="60" value="#{healthUnitEdit.selectedHealthUnit.description}" />
+	  	  </h:panelGrid>
+
+	  	  <h:commandButton action="#{healthUnitEdit.atualizar()}" value="Update" />
+ 	  	  <h:commandButton type="reset" value="Clear" />
 	  	
 	   	  <center>
 		   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/employee/menuEmployee.jsf">
