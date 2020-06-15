@@ -13,7 +13,7 @@
 		<jboss.home>${env.JBOSS_HOME}</jboss.home>
 		<jboss.domain>default</jboss.domain>
 		<hibernate.version>4.0.1.Final</hibernate.version>
-		<hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
+		<hibernate-validator.version>5.3.5.Final</hibernate-validator.version>
 		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
 		<junit.version>4.11</junit.version>
 		<javaee-7.version>7.0</javaee-7.version>
